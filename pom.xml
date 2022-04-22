@@ -13,7 +13,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>usuarios</name>
-	<description>Sistema de gestión de restaurante</description>
+	<description>Sistema de gestión de usuarios</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -46,6 +46,7 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
@@ -57,7 +58,6 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<version>${project.parent.version}</version>
 			</plugin>
 		</plugins>
 	</build>
