@@ -13,10 +13,10 @@ public class Product {
     @Id
     private long id;
 
-    @Column(name = "name", nullable = false, length = 100)
+    @Column(name = "nombre", nullable = false, length = 100)
     private String name;
 
-    @Column(name = "description", nullable = false, length = 100)
+    @Column(name = "descripcion", nullable = false, length = 100)
     private String description;
 
 }

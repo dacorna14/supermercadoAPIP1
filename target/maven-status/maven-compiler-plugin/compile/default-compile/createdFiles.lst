@@ -1,1 +1,6 @@
 com\supermercado\producto\ServletInitializer.class
+com\supermercado\producto\util\Message.class
+com\supermercado\producto\repository\ProductRepository.class
+com\supermercado\producto\entity\Product.class
+com\supermercado\producto\controllers\ProductController.class
+com\supermercado\producto\ProductApplication.class

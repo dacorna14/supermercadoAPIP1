@@ -6,6 +6,7 @@ import com.supermercado.producto.util.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -17,15 +18,19 @@ public class ProductController {
     private ProductRepository productRepository;
     private Message message = new Message();
 
-    @RequestMapping(value = "api/products/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Optional> getProduct(@PathVariable Long id) {
-        Optional<Product> foundProduct = productRepository.findById(id);
-        if (foundProduct.isPresent()) {
-            return message.viewMessage(HttpStatus.OK, "success", "Product found");
+
+
+    @RequestMapping(value = "api/product/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Product> getProducto(@PathVariable Long id){
+        Optional<Product> foundUser = productRepository.findById(id);
+        if(foundUser.isPresent()){
+            return ResponseEntity.ok(foundUser.get());
         }
-        return message.viewMessage(HttpStatus.NOT_FOUND, "Not found", "Product not found");
+        Map<String, String> errorResponse=new HashMap<>();
+        return new ResponseEntity(errorResponse,HttpStatus.NOT_FOUND);
     }
-    @RequestMapping(value= "api/products", method = RequestMethod.POST)
+
+    @RequestMapping(value= "api/product", method = RequestMethod.POST)
     public ResponseEntity createProduct(@RequestBody Product product){
         Map<String,String> response = new LinkedHashMap<>();
         try{
@@ -37,12 +42,12 @@ public class ProductController {
         }
     }
 
-    @RequestMapping(value = "api/products", method = RequestMethod.GET)
-    public List<Product> listUser(){
+    @RequestMapping(value = "api/product", method = RequestMethod.GET)
+    public List<Product> listProduct(){
         return productRepository.findAll();
     }
 
-    @RequestMapping(value= "api/products/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value= "api/product/{id}", method = RequestMethod.PUT)
     public ResponseEntity editProduct(@RequestBody Product newProduct, @PathVariable Long id){
         Map<String, String> response = new HashMap<>();
         try{
@@ -56,7 +61,7 @@ public class ProductController {
         }
     }
 
-    @RequestMapping(value = "api/products/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "api/product/{id}", method = RequestMethod.DELETE)
     public ResponseEntity deleteProduct(@PathVariable Long id){
         Map<String, String> response = new HashMap<>();
         try{
