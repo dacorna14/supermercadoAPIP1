@@ -34,7 +34,6 @@ public class ProductController {
     public ResponseEntity createProduct(@RequestBody Product product){
         Map<String,String> response = new LinkedHashMap<>();
         try{
-            product.setName(product.getName());
             productRepository.save(product);
             return message.viewMessage(HttpStatus.OK, "success", "registered product success");
         }catch (Exception e){

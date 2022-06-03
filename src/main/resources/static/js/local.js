@@ -18,8 +18,8 @@ function listar(){
                 productos +=
                 '<tr>'+
                 '<th scope="row">'+producto.id+'</th>'+
-                '<td>'+producto.nombre+'</td>'+
-                '<td>'+producto.descripcion+'</td>'+
+                '<td>'+producto.name+'</td>'+
+                '<td>'+producto.description+'</td>'+
 
                 '<td>'+
                     '<button type="button" class="btn btn-outline-danger" onclick="eliminaProducto(\''+producto.id+'\')"><i class="fa-solid fa-user-minus"></i></button>'+
@@ -73,9 +73,9 @@ function verModificarProducto(id){
                 '<form action="" method="post" id="myForm">'+
                     '<input type="hidden" name="id" id="id" value = "'+producto.id+'">'+
                     '<label for="nombre" class="form-label">Nombre</label>'+
-                    '<input type="text" name="nombre" class="form-control" id="nombre" required value = "'+producto.nombre+'"> <br>'+
+                    '<input type="text" name="nombre" class="form-control" id="name" required value = "'+producto.name+'"> <br>'+
                     '<label for="descripcion" class="form-label">Descripcion</label>'+
-                    '<input type="text" name="descripcion" class="form-control" id="descripcion" required value = "'+producto.descripcion+'"> <br>'+
+                    '<input type="text" name="descripcion" class="form-control" id="description" required value = "'+producto.description+'"> <br>'+
 
 
                     '<button type="button" class="btn btn-outline-warning" onclick="modificarProducto(\''+producto.id+'\')">Modificar</button>'+
@@ -130,8 +130,8 @@ function verProducto(id){
                 '<h1 class="display-6"><i class="fa-solid fa-user-pen"></i>Visualizar Producto</h1>'+
                 '</div>'+
                 '<ul class="list-group">'+
-                '<li class="list-group-item">Nombre: '+producto.nombre+'</li>'+
-                '<li class="list-group-item">Descripcion: '+producto.descripcion+'</li>'+
+                '<li class="list-group-item">Nombre: '+producto.name+'</li>'+
+                '<li class="list-group-item">Descripcion: '+producto.description+'</li>'+
 
                 '</ul>';
             }
@@ -157,7 +157,7 @@ function alertas(mensaje, tipo){
 }
 
 function registerForm(){
-var sas ="api/producto";
+var sas ="api/product";
     var cadena = '<div class="p-3 mb-2 bg-light text-dark">'+
                 '<h1 class="display-6"><i class="fa-solid fa-user-pen"></i>Registrar producto</h1>'+
                 '</div>'+
@@ -165,9 +165,9 @@ var sas ="api/producto";
                 '<form action="" method="post" id="myForm">'+
                     '<input type="hidden" name="id" id="id">'+
                     '<label for="nombre" class="form-label">Nombre</label>'+
-                    '<input type="text" name="nombre" class="form-control" id="nombre" required> <br>'+
+                    '<input type="text" name="nombre" class="form-control" id="name" required> <br>'+
                     '<label for="descripcion" class="form-label">Descripcion</label>'+
-                    '<input type="text" name="descripcion" class="form-control" id="descripcion" required> <br>'+
+                    '<input type="text" name="descripcion" class="form-control" id="description" required> <br>'+
 
                     '<button type="button" class="btn btn-outline-info" onclick="registrarProducto(\''+sas+'\')">Registrar</button>'+
                 '</form>';
@@ -183,7 +183,7 @@ async function registrarProducto(path){
     for(var [k, v] of formData){//convertimos los datos a json
         jsonData[k] = v;
     }
-    const request = await fetch("api/producto", {
+    const request = await fetch("api/product", {
         method: 'POST',
         headers:{
             'Accept':'application/json',
