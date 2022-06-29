@@ -70,7 +70,7 @@ function verModificarProducto(id){
 
                 '<form action="" method="post" id="myForm">'+
                     '<input type="hidden" name="id" id="id" value = "'+producto.id+'">'+
-                    '<label for="name" class="form-label">Color</label>'+
+                    '<label for="name" class="form-label">Nombre</label>'+
                     '<input type="text" name="name" class="form-control" id="name" required value = "'+producto.name+'"> <br>'+
                     '<label for="description" class="form-label">Descripcion</label>'+
                     '<input type="text" name="description" class="form-control" id="description" required value = "'+producto.description+'"> <br>'+
