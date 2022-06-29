@@ -43,7 +43,7 @@ function eliminaProducto(id){
     fetch("api/product/"+id,settings)
     .then(response => response.json())
     .then(function(data){
-        listar();
+        listarProductos();
         alertas("Se ha eliminado el producto exitosamente",2)
     })
 }
@@ -102,7 +102,7 @@ async function modificarProducto(id){
         },
         body: JSON.stringify(jsonData)
     });
-    listar();
+    listarProductos();
     alertas("Se ha modificado el producto exitosamente",1)
     document.getElementById("contentModal").innerHTML = '';
     var myModalEl = document.getElementById('modalUsuario')
@@ -195,7 +195,7 @@ async function registrarProducto(path){
         },
         body: JSON.stringify(jsonData)
     });
-    listar();
+    listarProductos();
     alertas("Se ha registrado el producto exitosamente",1)
     document.getElementById("contentModal").innerHTML = '';
     var myModalEl = document.getElementById('modalUsuario')
