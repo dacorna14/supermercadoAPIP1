@@ -1,6 +1,3 @@
-//funciones propias de la api
-
-
 function listar(){
     var settings={
         method: 'GET',
@@ -20,7 +17,8 @@ function listar(){
                 '<th scope="row">'+producto.id+'</th>'+
                 '<td>'+producto.name+'</td>'+
                 '<td>'+producto.description+'</td>'+
-
+                '<td>'+producto.existencia+'</td>'+
+                '<td>'+producto.precio+'</td>'+
                 '<td>'+
                     '<button type="button" class="btn btn-outline-danger" onclick="eliminaProducto(\''+producto.id+'\')"><i class="fa-solid fa-user-minus"></i></button>'+
                     '<a href="#" onclick="verModificarProducto(\''+producto.id+'\')" class="btn btn-outline-warning"><i class="fa-solid fa-user-pen"></i></a>'+
@@ -72,11 +70,14 @@ function verModificarProducto(id){
 
                 '<form action="" method="post" id="myForm">'+
                     '<input type="hidden" name="id" id="id" value = "'+producto.id+'">'+
-                    '<label for="nombre" class="form-label">Nombre</label>'+
-                    '<input type="text" name="nombre" class="form-control" id="name" required value = "'+producto.name+'"> <br>'+
-                    '<label for="descripcion" class="form-label">Descripcion</label>'+
-                    '<input type="text" name="descripcion" class="form-control" id="description" required value = "'+producto.description+'"> <br>'+
-
+                    '<label for="name" class="form-label">Nombre</label>'+
+                    '<input type="text" name="name" class="form-control" id="name" required value = "'+producto.name+'"> <br>'+
+                    '<label for="description" class="form-label">Descripcion</label>'+
+                    '<input type="text" name="description" class="form-control" id="description" required value = "'+producto.description+'"> <br>'+
+                    '<label for="existencia" class="form-label">Existencia del producto</label>'+
+                    '<input type="text" name="existencia" class="form-control" id="existencia" required value = "'+producto.existencia+'"> <br>'+
+                    '<label for="precio" class="form-label">Precio</label>'+
+                    '<input type="text" name="precio" class="form-control" id="precio" required value = "'+producto.precio+'"> <br>'+
 
                     '<button type="button" class="btn btn-outline-warning" onclick="modificarProducto(\''+producto.id+'\')">Modificar</button>'+
                 '</form>';
@@ -132,7 +133,8 @@ function verProducto(id){
                 '<ul class="list-group">'+
                 '<li class="list-group-item">Nombre: '+producto.name+'</li>'+
                 '<li class="list-group-item">Descripcion: '+producto.description+'</li>'+
-
+                '<li class="list-group-item">Existencia del producto: '+producto.existencia+'</li>'+
+                '<li class="list-group-item">Precio: '+producto.precio+'</li>'+
                 '</ul>';
             }
             document.getElementById("contentModal").innerHTML = cadena;
@@ -157,19 +159,22 @@ function alertas(mensaje, tipo){
 }
 
 function registerForm(){
-var sas ="api/product";
+var s ="api/product";
     var cadena = '<div class="p-3 mb-2 bg-light text-dark">'+
                 '<h1 class="display-6"><i class="fa-solid fa-user-pen"></i>Registrar producto</h1>'+
                 '</div>'+
 
                 '<form action="" method="post" id="myForm">'+
                     '<input type="hidden" name="id" id="id">'+
-                    '<label for="nombre" class="form-label">Nombre</label>'+
-                    '<input type="text" name="nombre" class="form-control" id="name" required> <br>'+
-                    '<label for="descripcion" class="form-label">Descripcion</label>'+
-                    '<input type="text" name="descripcion" class="form-control" id="description" required> <br>'+
-
-                    '<button type="button" class="btn btn-outline-info" onclick="registrarProducto(\''+sas+'\')">Registrar</button>'+
+                    '<label for="name" class="form-label">Nombre</label>'+
+                    '<input type="text" name="name" class="form-control" id="name" required> <br>'+
+                    '<label for="description" class="form-label">Description</label>'+
+                    '<input type="text" name="description" class="form-control" id="description" required> <br>'+
+                    '<label for="existencia" class="form-label">Existencia del producto</label>'+
+                    '<input type="text" name="existencia" class="form-control" id="existencia" required> <br>'+
+                    '<label for="precio" class="form-label">Precio</label>'+
+                    '<input type="text" name="precio" class="form-control" id="precio" required> <br>'+
+                    '<button type="button" class="btn btn-outline-info" onclick="registrarProducto(\''+s+'\')">Registrar</button>'+
                 '</form>';
                 document.getElementById("contentModal").innerHTML = cadena;
                 var myModal = new bootstrap.Modal(document.getElementById('modalUsuario'))

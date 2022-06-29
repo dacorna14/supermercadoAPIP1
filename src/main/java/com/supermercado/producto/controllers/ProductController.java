@@ -6,9 +6,7 @@ import com.supermercado.producto.util.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
 import org.springframework.web.bind.annotation.*;
-
 import java.util.*;
 
 @RestController
@@ -34,6 +32,10 @@ public class ProductController {
     public ResponseEntity createProduct(@RequestBody Product product){
         Map<String,String> response = new LinkedHashMap<>();
         try{
+            product.setName(product.getName());
+            product.setDescription(product.getDescription());
+            product.setExistencia(product.getExistencia());
+            product.setPrecio(product.getPrecio());
             productRepository.save(product);
             return message.viewMessage(HttpStatus.OK, "success", "registered product success");
         }catch (Exception e){
@@ -53,10 +55,13 @@ public class ProductController {
             Product product = productRepository.findById(id).get();
             product.setName(newProduct.getName());
             product.setDescription(newProduct.getDescription());
+            product.setExistencia(product.getExistencia());
+            product.setPrecio(product.getPrecio());
             productRepository.save(product);
-            return message.viewMessage(HttpStatus.OK, "success", "user edit success");
+
+            return message.viewMessage(HttpStatus.OK, "success", "Product edit success");
         }catch(Exception e){
-            return message.viewMessage(HttpStatus.NOT_FOUND, "error", "User not found");
+            return message.viewMessage(HttpStatus.NOT_FOUND, "error", "Product not found");
         }
     }
 
